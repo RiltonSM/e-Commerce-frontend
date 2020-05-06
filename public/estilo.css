@@ -1,0 +1,14 @@
+html, body, #root{
+    width: '100%';
+    height: '100%';
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    font-size: 100px;
+}
+a:hover {
+    text-decoration: none;
+}
+    
+
