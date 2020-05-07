@@ -47,19 +47,13 @@ let carr = localStorage.getItem('cart');
 console.log(carr);
 class App extends React.Component {
     state = {
-        produtos: [],
         cart: carr === null ? [] : JSON.parse(carr),
         total: 0,
         produtoAtivo: null,
-        session: sessionStorage.getItem('user') ? true : false
+        session: sessionStorage.getItem('user') ? true : false,
+        loading: true
     }
-    componentDidMount(){
-        api.get('produtos').then(response => {
-            const newproducts = response.data;
-            this.setState({produtos: newproducts});
-      });
-      
-    }
+    
 
     componentDidUpdate(){
         if(total !== this.state.total){
@@ -148,13 +142,11 @@ class App extends React.Component {
                     <Switch>
                         <Route path= {`/detail/:${this.state.produtoAtivo}`}>
                             <Detail 
-                                produtos={this.state.produtos} 
                                 addCart={this.addCart}
                             />
                         </Route>
                         <Route path="/" exact>
                             <Home 
-                                produtos={this.state.produtos} 
                                 images={images}
                             />
                         </Route>
@@ -191,9 +183,6 @@ class App extends React.Component {
                         </Route>
                         <Route path="/requests/detail/:id">
                             <OrderDetail />
-                        </Route>
-                        <Route path="/loading">
-                            <Loading/>
                         </Route>
                     </Switch>
                     <Footer/>
