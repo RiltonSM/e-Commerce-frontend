@@ -54,7 +54,6 @@ const Detail = props => {
                         </Jumbotron>
                     </Col>
                 </Row>
-                <CardRow produtos = {props.produtos} home={false} id={produto[0].categoria}/>
             </Container>
             }
         </div>
