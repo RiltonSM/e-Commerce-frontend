@@ -14,29 +14,18 @@ class CarouselSlider extends React.Component {
                 >
                     <Carousel.Item>
                         <div className="d-flex justify-content-center">
-                            <img
+                            <img className="img-fluid"
                                 src={this.props.images.path[1]} 
-                                width={1264} 
-                                height={315}
+                                //style={{maxWidth: 1264, maxHeight: 315}}
                             /> 
                         </div>
                     </Carousel.Item>
                     <Carousel.Item>
                         <div className="d-flex justify-content-center">
-                            <img 
+                            <img className="img-fluid"
                                 src={this.props.images.path[2]} 
-                                width={1264} 
-                                height={315}
+                                //style={{maxWidth: 1264, maxHeight: 315}}
                             /> 
-                        </div>
-                    </Carousel.Item>
-                    <Carousel.Item>
-                        <div className="d-flex justify-content-center">
-                            <img 
-                                src={this.props.images.path[3]}
-                                width={1264} 
-                                height={315}
-                            />
                         </div>
                     </Carousel.Item>
                 </Carousel>

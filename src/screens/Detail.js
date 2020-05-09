@@ -9,6 +9,7 @@ import CardRow from '../components/CardRow';
 
 const Detail = props => {
     const [ produto, setProduto ] = useState([]);
+    const [ categoryProducts, setCategoryProducts] = useState([]);
     const [ loading, setLoading ] = useState(true);
     let params = useParams();
     params = params.null;
@@ -22,6 +23,8 @@ const Detail = props => {
             };
             console.log(item.data[0]);
             setProduto(item.data);
+            const category = await api.get(`category/${item.data[0].categoria}`);
+            setCategoryProducts(category.data);
             setLoading(false);
         }
 
@@ -37,7 +40,7 @@ const Detail = props => {
             <Container>
                 <Row className='justify-content-center'>
                     <Col xs={12} md={6}>
-                        <Image src={require(`../images/${produto[0].imagem}.jpg`)} style={{width: 450, height: 230}}/>
+                        <Image src={require(`../images/${produto[0].imagem}.jpg`)}  fluid/>
                     </Col>
                     <Col xs={12} md={6}>
                         <Jumbotron className="border border-primary" fluid style={{backgroundColor: '#FFF', borderRadius: 10, paddingTop: 0}}>
@@ -54,6 +57,7 @@ const Detail = props => {
                         </Jumbotron>
                     </Col>
                 </Row>
+                <CardRow produtos = {categoryProducts} home={false} id={produto[0].categoria}/>
             </Container>
             }
         </div>

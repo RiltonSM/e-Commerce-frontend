@@ -43,10 +43,10 @@ const Cart = props => {
                 :
                 <div>
                 <Row style={{display: 'flex', alignItems: 'center'}}>
-                    <Col xs={10} style={{justifyContent: 'center'}}>
+                    <Col xs={6} md={9} lg={10} style={{justifyContent: 'center'}}>
                         <h2>Total</h2>
                     </Col>
-                    <Col xs={2} style={{justifyContent: 'center'}}>
+                    <Col xs={6} md={3} lg={2} style={{justifyContent: 'center'}}>
                         <h2>R$ {props.total}</h2>
                     </Col>
                 </Row>
