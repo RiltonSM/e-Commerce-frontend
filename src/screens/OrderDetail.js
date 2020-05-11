@@ -21,11 +21,11 @@ const OrderDetail = props => {
             setOrderData(order.data[0]);
             const info = await api.get(`getStatus/${order.data[0]["code"]}`);
             setStatus(parseInt(info.data));
-            setQuantity(JSON.parse(order.data[0].quantity));
-            const idProduct = JSON.parse(order.data[0].products);
+            setQuantity(order.data[0].quantity);
+            const idProduct = order.data[0].products;
         
-            idProduct.map(async item => {
-                await api.get(`item/${JSON.parse(item)}`)
+            idProduct.map(async (item) => {
+                await api.get(`item/${item}`)
                 .then(response => {
                     console.log(response.data);
                     setProducts(...products, response.data)
