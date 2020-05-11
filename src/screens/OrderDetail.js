@@ -17,15 +17,15 @@ const OrderDetail = props => {
     const [status, setStatus] = useState(0);
     useEffect(() => {
         async function getDetails(){
-            const order = await api.get(`getCode/${params}`);
+            const order = await api.get(`getCode/${JSON.parse(params)}`);
             setOrderData(order.data[0]);
             const info = await api.get(`getStatus/${order.data[0]["code"]}`);
             setStatus(parseInt(info.data));
             setQuantity(JSON.parse(order.data[0].quantity));
             const idProduct = JSON.parse(order.data[0].products);
-
+        
             idProduct.map(async item => {
-                await api.get(`item/${item}`)
+                await api.get(`item/${JSON.parse(item)}`)
                 .then(response => {
                     console.log(response.data);
                     setProducts(...products, response.data)
